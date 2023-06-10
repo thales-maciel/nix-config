@@ -1,11 +1,4 @@
 [
-  ./alacritty
-  ./bash
-  ./chromium
   ./discord
-  ./firefox
-  ./git
   ./i3-gaps
-  ./neovim
-  ./rofi
 ]

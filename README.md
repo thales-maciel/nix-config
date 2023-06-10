@@ -3,8 +3,6 @@
 The following instructions assumes you're running on a non-graphical, fresh installation of NixOS.  
 While a non-graphical installation is not neccessary, I prefer it as my initial choice.
 
-![desktop](https://i.redd.it/b96t7sb4nll91.png)
-
 ## Preparing the system build
 
 Connect to the internet via ``nmcli``:
@@ -19,7 +17,7 @@ nix-shell -p git
 
 Clone the repository to your home directory:
 ```
-git clone https://github.com/qwbarch/nix-config ~/nix-config
+git clone https://github.com/thales-maciel/nix-config ~/nix-config
 ```
 
 ## Running the system build

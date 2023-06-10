@@ -14,28 +14,15 @@
 
   outputs = { self, nixpkgs, unstable, home-manager, nurpkgs, ... }:
     let
-      username = "qwbarch";
-      hostName = "edward-nixos";
+      username = "thales";
+      hostName = "thales-nixos";
       system = "x86_64-linux";
       config = {
         allowUnfree = true;
         permittedInsecurePackages = [ "libav-11.12" ];
       };
-      localOverlay = prev: final: {
-        polybar-spotify = final.callPackage ./home/overlays/polybar-spotify.nix { };
-        arcanists2 = final.callPackage ./home/overlays/arcanists2.nix { };
-        unstable = import unstable {
-          inherit config;
-          system = final.system;
-        };
-      };
       pkgs = import nixpkgs {
         inherit system config;
-        overlays = [ localOverlay nurpkgs.overlay ];
-      };
-      nur = import nurpkgs {
-        inherit pkgs;
-        nurpkgs = pkgs;
       };
       # This value determines the NixOS release from which the default
       # settings for stateful data, like file locations and database versions

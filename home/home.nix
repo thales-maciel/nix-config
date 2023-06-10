@@ -2,63 +2,48 @@
 
 let
   stablePackages = with pkgs; [
+    # Shell
+    zplug
+    bat
+    lsd
+    htop
+    tmux
+    fzf
+    lazygit
+    lazydocker
+    ranger
+    jq
+    dunst
+    espanso
+    fnm
+    haskellPackages.greenclip
+
     # Applications
     vscode
     discord
     peek
     obs-studio
     vlc
-    tdesktop
-    arcanists2
-    steam
-    lutris
+    ferdium
+    openvpn3
+    firefox
 
     # Desktop
-    htop-vim
-    nvtop
-    feh
-    playerctl
+    htop
     xbanish
     neofetch
     xclip
     ripgrep
-    xmousepasteblock
-    jq
     unzip
     p7zip
     unrar
-    steam-run-native
-
-    # Programming
-    nix-prefetch-git
-    nodejs
-    yarn
-    rnix-lsp
-    postman
-    purescript
-    spago
-    nodePackages.purty
-    nodePackages.purescript-language-server
-    nodePackages.prettier
-    nasm
-    esbuild
-    jdk17_headless
-    gradle
   ];
   unstablePackages = with pkgs.unstable; [
     # Applications
-    signal-desktop
     spotify
-    ledger-live-desktop
-    bitwarden
-    ryujinx
-    parsec-bin
 
     #Libraries
     ffmpeg-full
-  ];
-  nurPackages = with pkgs.nur.repos; [
-    #iagocq.parsec
   ];
 in
 {
@@ -67,9 +52,7 @@ in
     homeDirectory = "/home/${username}";
     configuration = {
       programs.home-manager.enable = true;
-      services.blueman-applet.enable = true;
-
-      home.packages = stablePackages ++ unstablePackages ++ nurPackages;
+      home.packages = stablePackages ++ unstablePackages;
 
       # Restart services on change
       systemd.user.startServices = "sd-switch";

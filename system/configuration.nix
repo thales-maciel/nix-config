@@ -17,7 +17,7 @@
       };
 
       # Set your time zone.
-      time.timeZone = "EST5EDT";
+      time.timeZone = "America/Sao_Paulo";
 
       # Select internationalisation properties.
       i18n.defaultLocale = "en_US.utf8";
@@ -25,16 +25,7 @@
       services = {
         gvfs.enable = true; # Nautilus file manager.
         joycond.enable = true;
-        blueman.enable = true;
         getty.autologinUser = username;
-
-        udev.extraRules = ''
-          # Nintendo Switch Pro Controller over USB hidraw
-          KERNEL=="hidraw*", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2009", MODE="0660", TAG+="uaccess"
-
-          # Nintendo Switch Pro Controller over bluetooth hidraw
-          KERNEL=="hidraw*", KERNELS=="*057E:2009*", MODE="0660", TAG+="uaccess"
-        '';
 
         dbus = {
           enable = true;
@@ -44,7 +35,6 @@
         xserver = {
           enable = true;
           layout = "us";
-          xkbOptions = "caps:swapescape"; # Swap caps-lock with escape.
           videoDrivers = [ "nvidia" ];
           libinput = {
             enable = true;
@@ -64,7 +54,7 @@
             };
 
             # Enable 240hz refresh rate.
-            setupCommands = "${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --mode 1920x1080 --rate 239.76";
+            # setupCommands = "${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --mode 1920x1080 --rate 239.76";
           };
 
           windowManager.i3 = {
@@ -78,9 +68,7 @@
 
       hardware = {
         pulseaudio.enable = true;
-        bluetooth.enable = true;
-        ledger.enable = true; # Allow ledger devices to connect.
-        opengl.driSupport32Bit = true; # Required for steam.
+        # opengl.driSupport32Bit = true; # Required for steam.
       };
 
       # Enable docker in rootless mode.
@@ -92,7 +80,6 @@
       users.users.${username} = {
         isNormalUser = true;
         extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
-        packages = with pkgs; [ ];
       };
 
       # Allow unfree packages
