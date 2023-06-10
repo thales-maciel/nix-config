@@ -6,13 +6,9 @@
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nurpkgs = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, nurpkgs, ... }:
+  outputs = { self, nixpkgs, unstable, home-manager, ... }:
     let
       username = "thales";
       hostName = "thales-nixos";
